@@ -71,7 +71,7 @@
 		<maven.resolver.version>1.6.1</maven.resolver.version>
 		<maven.version>3.6.3</maven.version>
 		<slf4j.version>1.7.30</slf4j.version>
-		<distributionHost>http://nexus.seal-software.net</distributionHost>
+		<distributionHost>https://nexus.seal-software.net</distributionHost>
 	</properties>
 
 	<dependencies>
@@ -800,11 +800,11 @@
 				<repository>
 					<id>seal-releases</id>
 					<name>Internal Releases</name>
-					<url>${distributionHost}/repositories/releases/</url>
+					<url>${distributionHost}/repository/releases/</url>
 				</repository>
 				<snapshotRepository>
 					<id>seal-snapshots</id>
-					<url>${distributionHost}/repositories/snapshots/</url>
+					<url>${distributionHost}/repository/snapshots/</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
