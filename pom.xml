@@ -800,11 +800,11 @@
 				<repository>
 					<id>seal-releases</id>
 					<name>Internal Releases</name>
-					<url>${distributionHost}/content/repositories/releases/</url>
+					<url>${distributionHost}/repositories/releases/</url>
 				</repository>
 				<snapshotRepository>
 					<id>seal-snapshots</id>
-					<url>${distributionHost}/content/repositories/snapshots/</url>
+					<url>${distributionHost}/repositories/snapshots/</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
