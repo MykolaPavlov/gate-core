@@ -18,7 +18,7 @@ pipeline {
     }}
 
     environment {
-        VERSION = "9.0-INSIGHT.${env.BUILD_NUMBER}"
+        VERSION = getVersion()
         PROFILE = getProfile()
     }
 
@@ -73,4 +73,8 @@ def isMaster() {
 
 def isRelease() {
     return env.BRANCH_NAME ==~ /^releases\/.*/ || env.BRANCH_NAME ==~ /^....Q.$/
+}
+
+def getVersion() {
+    return isMaster() ? "9.0-INSIGHT.${env.BUILD_NUMBER}" : buildVersion()
 }
