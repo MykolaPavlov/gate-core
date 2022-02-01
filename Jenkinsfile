@@ -62,3 +62,15 @@ pipeline {
 def getProfile() {
     isMasterOrRelease() ? "release" : "builds"
 }
+
+def isMasterOrRelease() {
+    return isMaster() || isRelease()
+}
+
+def isMaster() {
+    return env.BRANCH_NAME == 'master'
+}
+
+def isRelease() {
+    return env.BRANCH_NAME ==~ /^releases\/.*/ || env.BRANCH_NAME ==~ /^....Q.$/
+}
