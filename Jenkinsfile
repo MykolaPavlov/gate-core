@@ -18,7 +18,8 @@ pipeline {
     }}
 
     environment {
-        VERSION = "9.0-SEAL-${env.BUILD_NUMBER}"
+        VERSION = "9.0-INSIGHT.${env.BUILD_NUMBER}"
+        PROFILE = getProfile()
     }
 
     stages {
@@ -44,11 +45,8 @@ pipeline {
         }
 
         stage('deploy') {
-            when {
-              branch 'master'
-            }
             steps {
-                sh("mvn -B -Prelease -e deploy -Dmaven.test.skip=true")
+                sh("mvn -B -P$PROFILE -e deploy -Dmaven.test.skip=true")
             }
         }
 
@@ -59,4 +57,8 @@ pipeline {
            cleanWs()
        }
     }
+}
+
+def getProfile() {
+    isMasterOrRelease() ? "release" : "builds"
 }
