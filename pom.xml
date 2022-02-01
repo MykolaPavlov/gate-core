@@ -810,6 +810,25 @@
 			</distributionManagement>
 		</profile>
 		<profile>
+			<id>builds</id>
+			<properties>
+				<!-- Only unit tests are run. -->
+				<skip.integration.tests>true</skip.integration.tests>
+				<skip.unit.tests>false</skip.unit.tests>
+			</properties>
+			<distributionManagement>
+				<repository>
+					<id>seal-builds</id>
+					<name>Internal Releases</name>
+					<url>${distributionHostBuilds}/repository/builds/</url>
+				</repository>
+				<snapshotRepository>
+					<id>seal-snapshots</id>
+					<url>${distributionHostBuilds}/repository/snapshots/</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
+		<profile>
 			<id>sonar-build</id>
 			<properties>
 				<!-- Sonar -->
