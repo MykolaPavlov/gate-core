@@ -76,5 +76,5 @@ def isRelease() {
 }
 
 def getVersion() {
-    return isMaster() ? "9.0-SEAL.${env.BUILD_NUMBER}" : buildVersion()
+    return isMaster() ? "9.0-SEAL-${env.BUILD_NUMBER}" : buildVersion()
 }
