@@ -63,7 +63,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<tika.version>1.25</tika.version>
+		<tika.version>1.28</tika.version>
 		<pdfbox.version>2.0.22</pdfbox.version>
 		<jempbox.version>1.8.16</jempbox.version>
 		<bouncycastle.version>1.68</bouncycastle.version>
@@ -72,6 +72,7 @@
 		<maven.version>3.6.3</maven.version>
 		<slf4j.version>1.7.30</slf4j.version>
 		<distributionHost>https://nexus.seal-software.net</distributionHost>
+		<distributionHostBuilds>https://builds.seal-software.net</distributionHostBuilds>
 	</properties>
 
 	<dependencies>
@@ -237,7 +238,7 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.8.0</version>
+			<version>2.11.0</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -454,7 +455,7 @@
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
-			<version>1.4.16</version>
+			<version>1.4.17</version>
 			<scope>compile</scope>
 			<exclusions>
 				<!-- we will pull in the full xpp3 so we don't need these -->
@@ -805,6 +806,25 @@
 				<snapshotRepository>
 					<id>seal-snapshots</id>
 					<url>${distributionHost}/repository/snapshots/</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
+		<profile>
+			<id>builds</id>
+			<properties>
+				<!-- Only unit tests are run. -->
+				<skip.integration.tests>true</skip.integration.tests>
+				<skip.unit.tests>false</skip.unit.tests>
+			</properties>
+			<distributionManagement>
+				<repository>
+					<id>seal-builds</id>
+					<name>Internal Releases</name>
+					<url>${distributionHostBuilds}/repository/builds/</url>
+				</repository>
+				<snapshotRepository>
+					<id>seal-snapshots</id>
+					<url>${distributionHostBuilds}/repository/snapshots/</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
