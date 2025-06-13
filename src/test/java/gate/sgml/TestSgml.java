@@ -22,6 +22,7 @@ import gate.Factory;
 import gate.FeatureMap;
 import gate.GateConstants;
 import gate.corpora.TestDocument;
+import gate.Gate;
 
 import java.net.URL;
 import java.util.Map;
@@ -39,7 +40,11 @@ public class TestSgml extends TestCase
 
   /** Fixture set up */
   @Override
-  public void setUp() {
+  public void setUp() throws Exception{
+    if (!Gate.isInitialised()) {
+        Gate.runInSandbox(true);
+        Gate.init();
+      }
   } // setUp
 
   public void testSgmlLoading() throws Exception {
