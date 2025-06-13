@@ -76,6 +76,6 @@ def isRelease() {
 }
 
 def getVersion() {
-    return "0.0.1" // temporal fix to not fail because of runnig not from org folder
+    return  "9.0-SEAL-${env.BUILD_NUMBER}" // temporal fix to not fail because of runnig not from org folder
     // return isMaster() ? "9.0-SEAL-${env.BUILD_NUMBER}" : buildVersion()
 }
